@@ -14,15 +14,19 @@ public class ChainWeapon : MonoBehaviour
     private Enemy attachedEnemy;
     private PlayerController player;
     private bool isAttached;
+    private DistanceJoint2D swingJoint;
 
     public void Start()
     {
         player = GetComponent<PlayerController>();
+        swingJoint = gameObject.AddComponent<DistanceJoint2D>();
+        swingJoint.enabled = false;
+        swingJoint.autoConfigureDistance = false;
+        swingJoint.maxDistanceOnly = true;
     }
 
     public void ForwardSlashAttack()
     {
-        // Raycast forward
         Vector2 direction = player.transform.localScale.x > 0 ? Vector2.right : Vector2.left;
         RaycastHit2D hit = Physics2D.Raycast(transform.position, direction, forwardSlashRange, enemyMask);
 
@@ -39,7 +43,6 @@ public class ChainWeapon : MonoBehaviour
 
     public void OverheadSwingAttack()
     {
-        // Circle cast to detect enemies above
         Collider2D hit = Physics2D.OverlapCircle(transform.position + Vector3.up * 1.5f, overheadSwingRange, enemyMask);
 
         if (hit)
@@ -58,11 +61,14 @@ public class ChainWeapon : MonoBehaviour
         isAttached = true;
         enemy.OnAttachedToChain(this);
 
+        swingJoint.enabled = true;
+        swingJoint.connectedBody = enemy.GetRigidbody();
+        swingJoint.distance = Vector2.Distance(transform.position, enemy.transform.position);
+
         if (chainRenderer)
         {
             chainRenderer.enabled = true;
-            chainRenderer.SetPosition(0, transform.position);
-            chainRenderer.SetPosition(1, enemy.transform.position);
+            chainRenderer.positionCount = 2;
         }
     }
 
@@ -70,22 +76,19 @@ public class ChainWeapon : MonoBehaviour
     {
         if (!isAttached || attachedEnemy == null) return;
 
-        // Player must be grounded to perform instant slam
-        if (player.IsGrounded())
-        {
-            attachedEnemy.SlamIntoGround();
-            Detach();
-        }
-        else
-        {
-            // Midair slam: apply velocity to player
-            player.GetRigidbody().velocity += Vector2.down * 10f;
-            attachedEnemy.SlamIntoGround();
-            Detach();
-        }
+        attachedEnemy.SlamIntoGround();
+        Detach();
     }
 
-    public void Detach()
+    public void ReleaseSwing()
+    {
+        if (!isAttached) return;
+
+        // Maintain current velocity
+        Detach();
+    }
+
+    void Detach()
     {
         if (attachedEnemy)
             attachedEnemy.OnDetachedFromChain();
@@ -93,16 +96,27 @@ public class ChainWeapon : MonoBehaviour
         attachedEnemy = null;
         isAttached = false;
 
+        swingJoint.enabled = false;
+        swingJoint.connectedBody = null;
+
         if (chainRenderer)
             chainRenderer.enabled = false;
     }
 
-    public void Update()
+    void Update()
     {
         if (isAttached && chainRenderer && attachedEnemy)
         {
             chainRenderer.SetPosition(0, transform.position);
             chainRenderer.SetPosition(1, attachedEnemy.transform.position);
+
+            // Swing control
+            float move = Input.GetAxisRaw("Horizontal");
+            player.GetRigidbody().AddForce(new Vector2(move * 8f, 0f));
+
+            // Jump to release
+            if (Input.GetButtonDown("Jump"))
+                ReleaseSwing();
         }
     }
 }

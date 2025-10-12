@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\nstei\\OneDrive\\Documents\\GitHub\\SubThread\\SubThreadWork\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{00DCC3BD-F075-3A30-8811-4C00B5D70795}|Assembly-CSharp.csproj|c:\\users\\nstei\\onedrive\\documents\\github\\subthread\\subthreadwork\\assets\\scripts\\chainweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00DCC3BD-F075-3A30-8811-4C00B5D70795}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\chainweapon.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{00DCC3BD-F075-3A30-8811-4C00B5D70795}|Assembly-CSharp.csproj|c:\\users\\nstei\\onedrive\\documents\\github\\subthread\\subthreadwork\\assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{00DCC3BD-F075-3A30-8811-4C00B5D70795}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\playercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -19,6 +23,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ChainWeapon.cs",
+              "DocumentMoniker": "C:\\Users\\nstei\\OneDrive\\Documents\\GitHub\\SubThread\\SubThreadWork\\Assets\\Scripts\\ChainWeapon.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\ChainWeapon.cs",
+              "ToolTip": "C:\\Users\\nstei\\OneDrive\\Documents\\GitHub\\SubThread\\SubThreadWork\\Assets\\Scripts\\ChainWeapon.cs",
+              "RelativeToolTip": "Assets\\Scripts\\ChainWeapon.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-12T22:10:37.4Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "PlayerController.cs",
               "DocumentMoniker": "C:\\Users\\nstei\\OneDrive\\Documents\\GitHub\\SubThread\\SubThreadWork\\Assets\\Scripts\\PlayerController.cs",
               "RelativeDocumentMoniker": "Assets\\Scripts\\PlayerController.cs",
