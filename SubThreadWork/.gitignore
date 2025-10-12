@@ -1,0 +1,33 @@
+# ===== Unity Project Folders =====
+SubThreadWork/[Ll]ibrary/
+SubThreadWork/[Tt]emp/
+SubThreadWork/[Oo]bj/
+SubThreadWork/[Bb]uild/
+SubThreadWork/[Bb]uilds/
+SubThreadWork/[Ll]ogs/
+SubThreadWork/[Mm]emoryCaptures/
+SubThreadWork/UserSettings/
+SubThreadWork/[Bb]ee/
+
+# ===== Unity Packages =====
+SubThreadWork/Packages/com.unity.collab-proxy/
+SubThreadWork/[Ll]ibrary/PackageCache/
+
+# ===== OS / IDE =====
+.DS_Store
+.vs/
+*.user
+*.suo
+*.tmp
+*.bak
+*.swp
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.csproj
+*.unityproj
+*.sln
